@@ -51,10 +51,7 @@ export default function Analytics() {
             <div className="w-2/5 bg-gray-100 pt-8 p-2 pb-1 pr-3 rounded-xl">
             <CityMap employees={employees} />
             <div className=" mt-4 rounded-2xl bg-[#271F5D] p-20 gap-2">
-            
                     <div className="text-4xl font-semibold text-white mb-6">Employee Dashboard</div>
-
-                
                 
                 <Curve />
 

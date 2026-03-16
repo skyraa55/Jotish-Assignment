@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://jyotish-assignment.onrender.com";
 
 export default function Login({ onSwitchToSignup }) {
     const [username, setUsername] = useState("");
