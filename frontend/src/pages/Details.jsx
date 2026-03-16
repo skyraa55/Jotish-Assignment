@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export default function Details(){
     const { id } = useParams();
@@ -7,6 +7,7 @@ export default function Details(){
     const canvasRef = useRef(null);
     const drawingRef = useRef(false);
     const drawCanvasRef = useRef(null);
+    const navigate = useNavigate();
   
     useEffect(()=>{
         startCamera();
@@ -61,10 +62,12 @@ export default function Details(){
         ctx.drawImage(signatureCanvas,0,photoHeight,width,signHeight);
 
         const finalImage = finalCanvas.toDataURL("image/png");
+        localStorage.setItem("mergedImage",finalImage);
         const link = document.createElement("a");
         link.href = finalImage;
         link.download="employee_photo_signature.png";
         link.click();
+        navigate("/analytics");
 
     }
     return (
@@ -78,7 +81,7 @@ export default function Details(){
             <h2 className="px-4 py-2 rounded-lg bg-green-500 text-white" >Signature</h2>
             <canvas ref={drawCanvasRef} width="400" height="60" style={{ border:"1px solid black "}} onMouseDown={startDrawing} onMouseLeave={stopDrawing} onMouseUp={stopDrawing} onMouseMove={draw} />
             <br />
-            <button className="px-4 py-2 rounded-lg bg-green-500 text-white" onClick={mergePhotoAndSignature}>
+            <button className="px-4 py-2 rounded-lg bg-green-500 text-white" onClick={mergePhotoAndSignature} >
                 photo+sign 
             </button>
         </div>
