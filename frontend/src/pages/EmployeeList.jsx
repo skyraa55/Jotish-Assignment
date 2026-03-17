@@ -30,10 +30,10 @@ export default function EmployeeList() {
         return acc;
     }, {});
     //added the bug intentionally which forgot to remove the eventListener
-    useEffect(() => {
-        const handleScroll = () => console.log(window.scrollY);
-        window.addEventListener("scroll", handleScroll);
-    }, []);
+    // useEffect(() => {
+    //     const handleScroll = () => console.log(window.scrollY);
+    //     window.addEventListener("scroll", handleScroll);
+    // }, []);
     const fetchEmployees = async () => {
         const res = await axios.post("https://backend.jotish.in/backend_dev/gettabledata.php", {
             username: "test",
